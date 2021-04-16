@@ -1,5 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { FlexCol } from ".";
 import { FlexRow } from "./Flex";
 
 const ring = keyframes`
@@ -94,4 +95,10 @@ export const LazyPreloader = styled(FlexRow)`
   border: ${({ theme }) => `4px solid ${theme.onSurface}`};
   border-radius: 50%;
   border-top-color: transparent;
+`;
+
+export const NoDocumentContainer = styled(FlexCol)`
+  width: 100%;
+  align-items: center;
+  color: ${({ theme }) => theme.onSurface};
 `;

@@ -2,7 +2,7 @@ import { useCollection } from "@nandorojo/swr-firestore";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { DisplayError } from "../Components/Error";
-import { RingLoader } from "../Components/Globals";
+import { NoDocument, RingLoader } from "../Components/Globals";
 import { ProfileFeed, ProfileHeader } from "../Components/Profile";
 import { ProfileContext } from "../Context";
 import { IProfile } from "../Firebase/types";
@@ -32,7 +32,7 @@ const Profile = () => {
       <ProfileFeed />
     </ProfileContext.Provider>
   ) : (
-    <h1>No Such User</h1>
+    <NoDocument type="Profile" />
   );
 };
 

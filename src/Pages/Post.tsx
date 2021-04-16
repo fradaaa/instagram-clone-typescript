@@ -2,7 +2,7 @@ import { useDocument } from "@nandorojo/swr-firestore";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { DisplayError } from "../Components/Error";
-import { RingLoader } from "../Components/Globals";
+import { NoDocument, RingLoader } from "../Components/Globals";
 import { PostSuggestions, RegularPost } from "../Components/Post";
 import { PostContext } from "../Context";
 import { IPost } from "../Firebase/types";
@@ -19,7 +19,7 @@ const Post = () => {
   });
 
   useEffect(() => {
-    if (data) {
+    if (data && data.exists) {
       document.title = `Instagram Photo • ${data.timestamp
         .toDate()
         .toLocaleString()}`;
@@ -38,7 +38,7 @@ const Post = () => {
       </PostContainer>
     </PostContext.Provider>
   ) : (
-    <h1>No Such Post</h1>
+    <NoDocument type="Post" />
   );
 };
 

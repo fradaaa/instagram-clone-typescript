@@ -1,5 +1,6 @@
 import { FlexCol, FlexRow } from "./Flex";
 import IconLoader from "./IconLoader";
+import NoDocument from "./NoDocument";
 import RingLoader from "./RingLoader";
 import RoundProfileImage from "./RoundProfileImage";
 import { LazyPreloader } from "./style";
@@ -11,6 +12,7 @@ export {
   RoundProfileImage,
   IconLoader,
   RingLoader,
+  NoDocument,
   LazyPreloader,
   FlexCol,
   FlexRow,
