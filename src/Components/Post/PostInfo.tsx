@@ -13,7 +13,7 @@ const PostInfo = () => {
   const { data, error, add } = useCollection<IComment>(
     `/postComments/${id}/refs`,
     {
-      listen: true,
+      listen: false,
       orderBy: "timestamp",
     }
   );

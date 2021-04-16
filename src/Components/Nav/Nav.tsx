@@ -26,6 +26,7 @@ const Nav = () => {
             href="https://github.com/fradaaa"
             aria-label="Github"
             target="_blank"
+            rel="noreferrer"
           >
             <AiFillGithub />
           </ExternalLink>

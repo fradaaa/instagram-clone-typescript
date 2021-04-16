@@ -16,7 +16,9 @@ const PostMenuModal = ({ closeModal }: { closeModal: () => void }) => {
 
   const copyPostURL = async (e: React.MouseEvent<HTMLDivElement>) => {
     try {
-      await navigator.clipboard.writeText(postURL);
+      await navigator.clipboard.writeText(
+        `${window.location.origin}${postURL}`
+      );
       toast("Link copied to clipboard.");
     } catch (error) {
       console.error(error);
