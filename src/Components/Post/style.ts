@@ -78,7 +78,7 @@ export const PostHeaderContainer = styled(FlexRow)`
   position: relative;
   width: 100%;
   border-bottom: ${({ theme }) => `1px solid ${theme.lightBorder}`};
-  padding: 10px 20px;
+  padding: 5px 10px;
   background-color: ${({ theme }) => theme.surface2};
   color: ${({ theme }) => theme.onSurface};
   flex: 1;
