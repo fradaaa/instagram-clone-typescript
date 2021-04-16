@@ -1,3 +1,4 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 export const Button = styled.button`
@@ -55,5 +56,41 @@ export const IconButton = styled.button<IconButtonProps>`
     display: block;
     width: ${({ width }) => `${width}px`};
     height: ${({ height }) => `${height}px`};
+  }
+`;
+
+const spinner = keyframes`
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn)
+  }
+`;
+
+type ButtonProps = {
+  isProcessing?: boolean;
+};
+
+export const ButtonWithSpinner = styled(Button)<ButtonProps>`
+  position: relative;
+  width: 80px;
+  height: 30px;
+
+  &::after {
+    ${({ isProcessing }) =>
+      isProcessing && {
+        content: '""',
+        position: "absolute",
+        width: "16px",
+        height: "16px",
+        inset: 0,
+        margin: "auto",
+        border: "3px solid transparent",
+        borderRadius: "50%",
+        borderTopColor: "white",
+        animation: `${spinner} .8s ease infinite`,
+      }}
   }
 `;

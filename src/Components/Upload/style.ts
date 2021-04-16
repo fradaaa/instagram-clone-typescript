@@ -78,6 +78,7 @@ export const UploadControlsContainer = styled(FlexRow)`
 `;
 
 export const StyledButton = styled(Button)`
+  flex: 1;
   width: 100%;
   height: 50px;
   display: block;
@@ -86,28 +87,4 @@ export const StyledButton = styled(Button)`
   letter-spacing: 1px;
   text-transform: uppercase;
   margin: 10px;
-`;
-
-export const ProgressContainer = styled(FlexRow)`
-  height: 15px;
-  margin-top: 10px;
-  border-radius: var(--brsm);
-  border: ${({ theme }) => `1px solid ${theme.lightBorder}`};
-  margin-bottom: 5px;
-  overflow: hidden;
-  position: relative;
-  background-color: ${({ theme }) => theme.surface4};
-`;
-
-type ProgressProps = {
-  percentage: number;
-};
-
-export const ProgressBar = styled.div<ProgressProps>`
-  position: absolute;
-  top: 0;
-  width: ${({ percentage }) => percentage + "%"};
-  height: 100%;
-  background-color: ${({ theme }) => theme.primary};
-  transition: width 0.3s ease 0s;
 `;

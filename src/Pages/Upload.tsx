@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useReducer } from "react";
 import { toast } from "react-toastify";
-import {
-  PhotoPreview,
-  UploadControls,
-  UploadProgress,
-} from "../Components/Upload";
+import { PhotoPreview, UploadControls } from "../Components/Upload";
 import { useFirebase } from "../Hooks";
 import { uploadReducer } from "../Reducers";
 import { uploadIntialState } from "../Reducers/uploadReducer";
@@ -32,7 +28,6 @@ const Upload = () => {
     isProcessing,
     postURL,
     isUploading,
-    progress,
     uploadedCount,
   } = state;
   const overallProgres = `(${uploadedCount} / ${files.length})`;
@@ -40,10 +35,6 @@ const Upload = () => {
   useEffect(() => {
     document.title = "Upload Photo";
   });
-
-  const updateProgress = useCallback((percetange: number) => {
-    dispatch({ type: "updateProgress", payload: percetange });
-  }, []);
 
   const updateUploadedCount = useCallback(() => {
     dispatch({ type: "updateUploadedCount" });
@@ -57,18 +48,14 @@ const Upload = () => {
     async (e: React.MouseEvent<HTMLButtonElement>) => {
       dispatch({ type: "upload" });
       try {
-        const postURL = await firebase.uploadPhotos(
-          files,
-          updateProgress,
-          updateUploadedCount
-        );
+        const postURL = await firebase.uploadPhotos(files, updateUploadedCount);
         toast("Photo(s) has been uploaded.");
         dispatch({ type: "setPostURL", payload: postURL });
       } catch (error) {
         console.error(error);
       }
     },
-    [files, firebase, updateProgress, updateUploadedCount]
+    [files, firebase, updateUploadedCount]
   );
 
   const handleChange = useCallback(
@@ -99,7 +86,6 @@ const Upload = () => {
         isProcessing={isProcessing}
         removeFile={removeFile}
       />
-      {isUploading && <UploadProgress percentage={progress} />}
       <UploadControls
         disabled={!active || isUploading}
         handleChange={handleChange}

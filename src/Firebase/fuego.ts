@@ -111,11 +111,7 @@ class Fuego {
     );
   };
 
-  uploadSingleFile = (
-    file: File,
-    postId: string,
-    updateProgress: (n: number) => void
-  ): Promise<string> => {
+  uploadSingleFile = (file: File, postId: string): Promise<string> => {
     return new Promise((resolve) => {
       const uid = this.getAuthUserId();
       const fileName = uuidv4();
@@ -127,9 +123,8 @@ class Fuego {
       task.on(
         "state_changed",
         (snapshot) => {
-          const percentage =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          updateProgress(percentage);
+          /* const percentage =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100; */
         },
         (error) => {
           console.error(error);
@@ -142,22 +137,14 @@ class Fuego {
     });
   };
 
-  uploadPhotos = async (
-    files: File[],
-    updateProgress: (n: number) => void,
-    updateUploadedCount: () => void
-  ) => {
+  uploadPhotos = async (files: File[], updateUploadedCount: () => void) => {
     const uid = this.getAuthUserId();
     const userRef = this.db.collection("users").doc(uid);
     const postRef = this.db.collection("posts").doc();
     const URLs: string[] = [];
 
     for (let file of files) {
-      const downloadURL = await this.uploadSingleFile(
-        file,
-        postRef.id,
-        updateProgress
-      );
+      const downloadURL = await this.uploadSingleFile(file, postRef.id);
       updateUploadedCount();
       URLs.push(downloadURL);
     }

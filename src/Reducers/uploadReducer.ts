@@ -4,7 +4,6 @@ type State = {
   active: boolean;
   isProcessing: boolean;
   isUploading: boolean;
-  progress: number;
   uploadedCount: number;
   postURL: string | null;
 };
@@ -19,7 +18,6 @@ type Action =
       };
     }
   | { type: "upload" }
-  | { type: "updateProgress"; payload: number }
   | { type: "updateUploadedCount" }
   | { type: "setPostURL"; payload: string }
   | { type: "removeFile"; payload: number };
@@ -30,7 +28,6 @@ export const uploadIntialState: State = {
   active: false,
   isProcessing: false,
   isUploading: false,
-  progress: 0,
   uploadedCount: 0,
   postURL: null,
 };
@@ -58,11 +55,6 @@ const uploadReducer = (state: State, action: Action) => {
       return {
         ...state,
         isUploading: true,
-      };
-    case "updateProgress":
-      return {
-        ...state,
-        progress: action.payload,
       };
     case "updateUploadedCount":
       return {

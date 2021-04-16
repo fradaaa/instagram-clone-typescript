@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useAuthUser, useFirebase, useModal } from "../../Hooks";
 import { LoginForm } from "../Forms";
 import { Modal } from "../Modals";
-import { Button } from "./style";
+import { Button, ButtonWithSpinner } from "./style";
 
 type FollowButtonProps = {
   profileId: string;
@@ -37,9 +37,13 @@ const FollowButton = React.memo(({ profileId }: FollowButtonProps) => {
   };
 
   return data ? (
-    <Button disabled={disabled} onClick={handleClick}>
-      {data.exists ? "Unfollow" : "Follow"}
-    </Button>
+    <ButtonWithSpinner
+      isProcessing={disabled}
+      disabled={disabled}
+      onClick={handleClick}
+    >
+      {disabled ? null : data.exists ? "Unfollow" : "Follow"}
+    </ButtonWithSpinner>
   ) : authUser ? null : (
     <>
       <Button onClick={openModal}>Follow</Button>
