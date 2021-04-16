@@ -1,0 +1,43 @@
+const darkTheme = {
+  primary: "#757ce8",
+  primaryVariant: "#002884",
+  secondary: "#7c4dff",
+  secondaryVariant: "#7c4dff",
+  background: "#121212",
+  surface: "#1d1d1d",
+  surface2: "#2a2a2a",
+  surface3: "#363636",
+  surface4: "#424242",
+  lightBorder: "rgba(0,0,0,0.2)",
+  darkBorder: "#424242",
+  error: "#cf6679",
+  onPrimary: "#000",
+  onPrimaryVariant: "#fff",
+  onSecondary: "#000",
+  onBackground: "#fff",
+  onSurface: "#fff",
+  onError: "#000",
+};
+
+const lightTheme = {
+  primary: "#3f51b5",
+  primaryVariant: "#002884",
+  secondary: "#7c4dff",
+  secondaryVariant: "#3f1dcb",
+  background: "#fff",
+  surface: "#fff",
+  surface2: "#fff",
+  surface3: "#fff",
+  surface4: "#fff",
+  lightBorder: "rgba(0,0,0,0.2)",
+  darkBorder: "rgba(0,0,0,0.6)",
+  error: "#b00020",
+  onPrimary: "#fff",
+  onPrimaryVariant: "#fff",
+  onSecondary: "#000",
+  onBackground: "#000",
+  onSurface: "#000",
+  onError: "#fff",
+};
+
+export { darkTheme, lightTheme };

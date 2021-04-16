@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "react-toastify/dist/ReactToastify.min.css";
+import SwiperCore, { Lazy, Navigation, Pagination } from "swiper";
+import "swiper/components/lazy/lazy.min.css";
+import "swiper/components/navigation/navigation.min.css";
+import "swiper/components/pagination/pagination.min.css";
+import "swiper/swiper.min.css";
+import Footer from "./Components/Footer/Footer";
+import Main from "./Components/Main/Main";
+import Nav from "./Components/Nav/Nav";
+import { Toast } from "./Components/Toast";
 
-function App() {
+SwiperCore.use([Navigation, Pagination, Lazy]);
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav />
+      <Main />
+      <Footer />
+      <Toast />
+    </>
   );
-}
+};
 
 export default App;
