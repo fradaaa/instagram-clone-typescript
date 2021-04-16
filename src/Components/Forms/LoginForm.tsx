@@ -48,7 +48,7 @@ const LoginForm = () => {
   return (
     <>
       <FormContainer>
-        <FormHeader>Instagram</FormHeader>
+        <FormHeader>Instagram Clone</FormHeader>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}

@@ -64,7 +64,7 @@ const SignUpForm = () => {
   return (
     <>
       <FormContainer>
-        <FormHeader>Instagram</FormHeader>
+        <FormHeader>Instagram Clone</FormHeader>
         <FormSubheader>
           Sign up to see photos and videos from your friends
         </FormSubheader>

@@ -20,7 +20,7 @@ const Post = () => {
 
   useEffect(() => {
     if (data && data.exists) {
-      document.title = `Instagram Photo • ${data.timestamp
+      document.title = `Instagram Clone Photo • ${data.timestamp
         .toDate()
         .toLocaleString()}`;
     }
