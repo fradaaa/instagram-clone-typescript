@@ -6,7 +6,7 @@ You can check the project at [Instagram Clone](https://instagram-clone-13fab.web
 
 ## Features
 
-The project has the folowing features:
+The project has the following features:
 
 - Auth system
 - Upload images
