@@ -3,7 +3,11 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 import { DisplayError } from "../Components/Error";
 import { NoDocument, RingLoader } from "../Components/Globals";
-import { ProfileFeed, ProfileHeader } from "../Components/Profile";
+import {
+  ProfileBottomStats,
+  ProfileFeed,
+  ProfileHeader,
+} from "../Components/Profile";
 import { ProfileContext } from "../Context";
 import { IProfile } from "../Firebase/types";
 
@@ -29,6 +33,7 @@ const Profile = () => {
   return data && data[0] && data[0].exists ? (
     <ProfileContext.Provider value={data[0]}>
       <ProfileHeader />
+      <ProfileBottomStats />
       <ProfileFeed />
     </ProfileContext.Provider>
   ) : (

@@ -1,28 +1,52 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import { mq } from "../../Theme";
 import { FlexCol, FlexRow, StyledLink } from "../Globals";
 
 export const ProfileHeaderContainer = styled(FlexRow)`
   align-items: stretch;
-  height: 250px;
+  height: 150px;
   padding: 30px 0;
   border-radius: var(--brmd);
   background-color: ${({ theme }) => theme.surface};
+
+  ${mq["sm"]} {
+    height: 250px;
+  }
 `;
 
 export const ProfilePhotoContainer = styled(FlexRow)`
   flex: 1;
   justify-content: center;
+
+  & img {
+    width: 100px;
+    height: 100px;
+  }
+
+  ${mq["sm"]} {
+    & img {
+      width: 150px;
+      height: 150px;
+    }
+  }
 `;
 
 export const HeaderSection = styled(FlexCol)`
   flex: 2;
-  flex-flow: column nowrap;
-  justify-content: space-between;
+  padding: 10px;
+  justify-content: space-around;
   align-items: stretch;
 `;
 
-export const UserNameContainer = styled(FlexRow)``;
+export const UserNameContainer = styled(FlexCol)`
+  flex: 1;
+
+  ${mq["md"]} {
+    flex-flow: row;
+    align-items: center;
+  }
+`;
 
 export const UserName = styled.h2`
   font-weight: 600;
@@ -33,12 +57,33 @@ export const UserName = styled.h2`
 `;
 
 export const ButtonsContainer = styled(FlexRow)`
+  flex-wrap: wrap;
+
   & button:first-of-type {
     margin-right: 10px;
   }
 `;
 
-export const ProfileStatsContainer = styled(FlexRow)``;
+export const ProfileStatsContainer = styled(FlexRow)`
+  display: none;
+  flex: 1;
+
+  ${mq["md"]} {
+    display: flex;
+  }
+`;
+
+export const ProfilesBottomStatsContainer = styled(FlexRow)`
+  justify-content: space-between;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: var(--brmd);
+  background-color: ${({ theme }) => theme.surface};
+
+  ${mq["md"]} {
+    display: none;
+  }
+`;
 
 type ItemContainerProps = {
   pointer?: boolean;
@@ -71,6 +116,8 @@ export const Number = styled.span`
 
 export const ProfileInfoContainer = styled(FlexCol)`
   color: ${({ theme }) => theme.onSurface};
+  flex: 1;
+  justify-content: space-around;
 `;
 
 export const FullName = styled.h3`
@@ -112,8 +159,8 @@ export const ProfileNavLink = styled(StyledLink)`
 export const ProfilePostsContainer = styled.div`
   display: grid;
   background-color: ${({ theme }) => theme.surface};
-  grid-template-columns: repeat(3, minmax(150px, 1fr));
-  grid-auto-rows: minmax(150px, auto);
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
   gap: 10px;
 `;
 

@@ -18,7 +18,8 @@ const PostPhoto = () => {
   if (error) return <DisplayError />;
 
   const handleDoubleClick = async (e: React.MouseEvent<HTMLDivElement>) => {
-    if (disabled) return;
+    const target = e.target as Node;
+    if (disabled || target.nodeName !== "IMG") return;
 
     if (data?.exists) {
       setDisabled(true);

@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { Form } from "formik";
+import { mq } from "../../Theme";
 import { IconButton } from "../Buttons/style";
-import { FlexCol, FlexRow, StyledTextArea } from "../Globals";
+import { FlexCol, FlexRow, StyledLink, StyledTextArea } from "../Globals";
 
 export const ChooseDialogContainer = styled(FlexCol)`
   align-items: center;
@@ -43,6 +44,21 @@ export const MessagesHeaderContainer = styled(FlexRow)`
   background-color: ${({ theme }) => theme.surface2};
   padding: 10px;
   flex: 1;
+`;
+
+export const MessagesGoBack = styled(StyledLink)`
+  padding: 5px;
+  display: flex;
+
+  & svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  ${mq["sm"]} {
+    display: none;
+  }
 `;
 
 export const MessagesHeaderUserName = styled.div`
@@ -98,7 +114,7 @@ export const StyledMessage = styled(FlexRow)<StyledMessageProps>`
   justify-content: ${({ sent }) => (sent ? "flex-start" : "flex-end")};
   flex-direction: ${({ sent }) => (sent ? "row" : "row-reverse")};
   align-items: flex-start;
-  width: 50%;
+  width: 100%;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: var(--brlg);
@@ -112,6 +128,10 @@ export const StyledMessage = styled(FlexRow)<StyledMessageProps>`
     cursor: pointer;
     background-color: ${({ selected, theme }) =>
       selected ? theme.primary : theme.surface3};
+  }
+
+  ${mq["md"]} {
+    width: 50%;
   }
 `;
 
@@ -142,11 +162,13 @@ export const MessageDate = styled(FlexRow)<StyledMessageProps>`
   color: ${({ selected, theme }) =>
     selected ? theme.onPrimary : theme.onSurface};
   font-weight: 600;
+  white-space: nowrap;
 `;
 
 export const MessageText = styled(FlexRow)`
   margin-top: 5px;
   font-size: 13px;
+  word-break: break-all;
 `;
 
 export const MessagesFormContainer = styled(FlexRow)`

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Form } from "formik";
+import { mq } from "../../Theme";
 import { FlexCol, FlexRow, StyledLink, StyledTextArea } from "../Globals";
 
 type PostProps = {
@@ -13,14 +14,17 @@ export const StyledPostContainer = styled(FlexRow)<PostProps>`
   position: relative;
   width: 100%;
   flex: 1;
-  flex-direction: ${({ column }) => column && "column"};
   border: ${({ theme, modal }) =>
     modal ? "none" : `1px solid ${theme.lightBorder}`};
   border-radius: var(--brmd);
   overflow: hidden;
-  padding-bottom: ${({ ratio }) => ratio + "%"};
+  padding-bottom: ${({ ratio }) => ratio * 1.3 + "%"};
   align-items: stretch;
   margin-bottom: ${({ margin }) => margin && margin + "px"};
+
+  ${mq["md"]} {
+    padding-bottom: ${({ ratio }) => ratio + "%"};
+  }
 `;
 
 type WrapperProps = {
@@ -28,11 +32,15 @@ type WrapperProps = {
 };
 
 export const PostWrapper = styled(FlexRow)<WrapperProps>`
-  flex-direction: ${({ column }) => column && "column"};
+  flex-direction: column;
   position: absolute;
   height: 100%;
   inset: 0;
   align-items: stretch;
+
+  ${mq["md"]} {
+    flex-direction: ${({ column }) => (column ? "column" : "row")};
+  }
 `;
 
 export const PostPhotoContainer = styled(FlexRow)`
@@ -48,11 +56,16 @@ export const PostPhotoContainer = styled(FlexRow)`
 export const PostInfoContainer = styled(FlexCol)`
   border-left: ${({ theme }) => `1px solid ${theme.lightBorder}`};
   flex: 4;
+  display: none;
+
+  ${mq["md"]} {
+    display: flex;
+  }
 `;
 
 export const PostFeedInfoContainer = styled(FlexCol)`
+  position: relative;
   width: 100%;
-  overflow: hidden;
   padding: 10px;
   flex: 2;
   background-color: ${({ theme }) => theme.surface};
@@ -64,6 +77,9 @@ export const CommentsLinkContainer = styled(FlexRow)`
 `;
 
 export const CommentsLink = styled(StyledLink)`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 15px;
   padding: 5px;
   border-radius: var(--brsm);
@@ -78,11 +94,19 @@ export const PostHeaderContainer = styled(FlexRow)`
   position: relative;
   width: 100%;
   border-bottom: ${({ theme }) => `1px solid ${theme.lightBorder}`};
-  padding: 5px 10px;
+  padding: 10px;
   background-color: ${({ theme }) => theme.surface2};
   color: ${({ theme }) => theme.onSurface};
   flex: 1;
   max-height: 70px;
+`;
+
+export const HiddenPostHeaderContainer = styled(PostHeaderContainer)`
+  display: flex;
+
+  ${mq["md"]} {
+    display: none;
+  }
 `;
 
 export const PostHeaderUserName = styled(FlexRow)`
@@ -133,6 +157,10 @@ export const PostInteractionContainer = styled(FlexCol)`
   border-top: ${({ theme }) => `1px solid ${theme.lightBorder}`};
   background-color: ${({ theme }) => theme.surface2};
   padding: 0 10px;
+
+  ${mq["sm"]} {
+    display: block;
+  }
 `;
 
 export const PostButtonsContainer = styled(FlexRow)`
@@ -216,4 +244,14 @@ export const SuggestionsText = styled(FlexRow)`
   padding: 10px;
   font-size: 16px;
   border-radius: var(--brmd) var(--brmd) 0 0;
+`;
+
+export const PostBottomInfoContainer = styled(FlexCol)`
+  flex: 2;
+  padding: 5px 10px;
+  background-color: ${({ theme }) => theme.surface};
+
+  ${mq["md"]} {
+    display: none;
+  }
 `;

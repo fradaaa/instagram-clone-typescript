@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mq } from "../../Theme";
 import { IconButton } from "../Buttons/style";
 import { FlexCol, FlexRow, StyledInput, StyledLink } from "../Globals";
 
@@ -23,6 +24,11 @@ export const NavItem = styled(FlexRow)`
 
   &:nth-of-type(2) {
     justify-content: center;
+    display: none;
+
+    ${mq["md"]} {
+      display: flex;
+    }
   }
 
   &:last-of-type {
@@ -109,13 +115,14 @@ export const SearchInput = styled(StyledInput)`
   width: 100%;
   height: 60%;
   text-align: center;
+  padding: 0 25px;
   background-color: ${({ theme }) => theme.surface2};
 `;
 
 export const SearchResultsContainer = styled(FlexCol)`
   position: absolute;
   top: 50px;
-  width: 100%;
+  width: 120%;
   overflow: hidden;
   border-radius: var(--brmd);
   background-color: ${({ theme }) => theme.surface2};

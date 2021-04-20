@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { FlexCol, FlexRow } from "../Components/Globals";
+import { mq } from "../Theme";
 
 export const AccountsContainer = styled(FlexCol)`
   justify-content: center;
@@ -20,11 +21,20 @@ export const DirectContainer = styled(FlexRow)`
   overflow: hidden;
 `;
 
-export const DirectMessagesContainer = styled(FlexRow)`
+type DirectProps = {
+  hide: boolean;
+};
+
+export const DirectMessagesContainer = styled(FlexRow)<DirectProps>`
+  display: ${({ hide }) => (hide ? "flex" : "none")};
   flex: 3;
+
+  ${mq["sm"]} {
+    display: flex;
+  }
 `;
 
-export const EditContainer = styled(FlexRow)`
+export const EditContainer = styled(FlexCol)`
   align-items: stretch;
   width: 100%;
   height: 100%;
@@ -32,6 +42,10 @@ export const EditContainer = styled(FlexRow)`
   flex: 1;
   border-radius: var(--brmd);
   overflow: hidden;
+
+  ${mq["sm"]} {
+    flex-flow: row;
+  }
 `;
 
 export const EditContentContainer = styled(FlexRow)`
@@ -53,6 +67,10 @@ export const PostContainer = styled(FlexCol)`
 
 export const UploadContainer = styled(FlexCol)`
   height: 450px;
-  width: 450px;
+  width: 350px;
   text-align: center;
+
+  ${mq["md"]} {
+    width: 450px;
+  }
 `;

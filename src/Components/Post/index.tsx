@@ -4,18 +4,20 @@ import { PostContext } from "../../Context";
 import { IPost } from "../../Firebase/types";
 import { DisplayError } from "../Error";
 import PostFeedInfo from "./PostFeedInfo";
-import PostHeader from "./PostHeader";
-import PostInfo from "./PostInfo";
+import PostHeader, { HiddenPostHeader } from "./PostHeader";
+import { PostBottomInfo, PostInfo } from "./PostInfo";
 import PostPhoto from "./PostPhoto";
 import PostSuggestions from "./PostSuggestions";
 import { PostWrapper, StyledPostContainer } from "./style";
 
 const RegularPost = ({ modal }: { modal?: boolean }) => {
   return (
-    <StyledPostContainer ratio={70} modal={modal}>
+    <StyledPostContainer ratio={80} modal={modal}>
       <PostWrapper>
+        <HiddenPostHeader />
         <PostPhoto />
         <PostInfo />
+        <PostBottomInfo />
       </PostWrapper>
     </StyledPostContainer>
   );
@@ -30,7 +32,7 @@ const FeedPost = React.memo(({ postId }: { postId: string }) => {
 
   return data && data.exists ? (
     <PostContext.Provider value={data}>
-      <StyledPostContainer ratio={100} column margin={50}>
+      <StyledPostContainer ratio={90} margin={50}>
         <PostWrapper column>
           <PostHeader />
           <PostPhoto />

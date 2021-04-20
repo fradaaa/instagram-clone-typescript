@@ -1,7 +1,7 @@
 import { useCollection } from "@nandorojo/swr-firestore";
 import { useCallback, useState } from "react";
 import { IDialog } from "../../Firebase/types";
-import { useAuthUser } from "../../Hooks";
+import { useAuthUser, useMatchURL } from "../../Hooks";
 import { DisplayError } from "../Error";
 import { RingLoader } from "../Globals";
 import DialogItem from "./DialogItem";
@@ -10,6 +10,7 @@ import { DialogsContainer } from "./style";
 
 const Dialogs = () => {
   const authUser = useAuthUser();
+  const show = useMatchURL("/direct");
   const [filterString, setFilterString] = useState("");
   const { data, error } = useCollection<IDialog>("/direct", {
     listen: true,
@@ -28,7 +29,7 @@ const Dialogs = () => {
   if (error) return <DisplayError />;
 
   return (
-    <DialogsContainer>
+    <DialogsContainer show={show}>
       <>
         <FilterDialogs
           value={filterString}

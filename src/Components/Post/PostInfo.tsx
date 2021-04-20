@@ -3,10 +3,12 @@ import { IComment } from "../../Firebase/types";
 import { usePost } from "../../Hooks";
 import { DisplayError } from "../Error";
 import { RingLoader } from "../Globals";
+import PostButtons from "./PostButtons";
 import PostComments from "./PostComments";
 import PostHeader from "./PostHeader";
 import PostInteraction from "./PostInteraction";
-import { PostInfoContainer } from "./style";
+import PostStats from "./PostStats";
+import { PostBottomInfoContainer, PostInfoContainer } from "./style";
 
 const PostInfo = () => {
   const { id } = usePost();
@@ -29,4 +31,13 @@ const PostInfo = () => {
   );
 };
 
-export default PostInfo;
+const PostBottomInfo = () => {
+  return (
+    <PostBottomInfoContainer>
+      <PostButtons />
+      <PostStats />
+    </PostBottomInfoContainer>
+  );
+};
+
+export { PostInfo, PostBottomInfo };

@@ -1,11 +1,21 @@
 import styled from "@emotion/styled";
+import { mq } from "../../Theme";
 import { IconButton } from "../Buttons/style";
 import { FlexCol, FlexRow, StyledInput } from "../Globals";
 
-export const DialogsContainer = styled(FlexCol)`
+type ContainerProps = {
+  show: boolean;
+};
+
+export const DialogsContainer = styled(FlexCol)<ContainerProps>`
+  display: ${({ show }) => (show ? "flex" : "none")};
   flex: 1;
   border-right: ${({ theme }) => `1px solid ${theme.lightBorder}`};
   background-color: ${({ theme }) => theme.surface2};
+
+  ${mq["sm"]} {
+    display: flex;
+  }
 `;
 
 type DialogProps = {
@@ -51,6 +61,7 @@ export const DialogInfo = styled(FlexRow)`
 
 export const DialogUserName = styled.div`
   font-size: 13px;
+  white-space: nowrap;
 `;
 
 export const FilterContainer = styled(FlexRow)`

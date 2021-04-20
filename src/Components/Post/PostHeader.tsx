@@ -9,6 +9,7 @@ import { DisplayError } from "../Error";
 import { RoundProfileImage } from "../Globals";
 import { Modal, PostMenuModal } from "../Modals";
 import {
+  HiddenPostHeaderContainer,
   PostHeaderContainer,
   PostHeaderMenuContainer,
   PostHeaderUserName,
@@ -73,6 +74,14 @@ const PostHeader = () => {
         </>
       ) : null}
     </PostHeaderContainer>
+  );
+};
+
+export const HiddenPostHeader = () => {
+  return (
+    <HiddenPostHeaderContainer>
+      <PostHeader />
+    </HiddenPostHeaderContainer>
   );
 };
 

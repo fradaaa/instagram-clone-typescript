@@ -1,6 +1,11 @@
 import { useModal, useProfile } from "../../Hooks";
 import { Modal, ProfilesListModal } from "../Modals";
-import { ItemContainer, Number, ProfileStatsContainer } from "./style";
+import {
+  ItemContainer,
+  Number,
+  ProfileStatsContainer,
+  ProfilesBottomStatsContainer,
+} from "./style";
 
 type StatsItemProps = {
   number: number;
@@ -56,4 +61,16 @@ const ProfileStats = () => {
   );
 };
 
-export default ProfileStats;
+const ProfileBottomStats = () => {
+  const { postsNumber, followingNumber, followersNumber } = useProfile();
+
+  return (
+    <ProfilesBottomStatsContainer>
+      <StatsItem number={postsNumber} type="posts" />
+      <ModalStatsItem number={followersNumber} type="followers" />
+      <ModalStatsItem number={followingNumber} type="following" />
+    </ProfilesBottomStatsContainer>
+  );
+};
+
+export { ProfileStats, ProfileBottomStats };

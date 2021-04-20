@@ -1,8 +1,10 @@
 import { Document } from "@nandorojo/swr-firestore";
 import { Link } from "react-router-dom";
+import { HiArrowLeft } from "react-icons/hi";
 import { IProfile } from "../../Firebase/types";
 import { RoundProfileImage, StyledLink } from "../Globals";
 import {
+  MessagesGoBack,
   MessagesHeaderContainer,
   MessagesHeaderPhoto,
   MessagesHeaderUserName,
@@ -15,6 +17,9 @@ const MessagesHeader = ({
 }) => {
   return (
     <MessagesHeaderContainer>
+      <MessagesGoBack to="/direct">
+        <HiArrowLeft />
+      </MessagesGoBack>
       <MessagesHeaderUserName>
         <StyledLink to={`/${userName}`}>{userName}</StyledLink>
       </MessagesHeaderUserName>
