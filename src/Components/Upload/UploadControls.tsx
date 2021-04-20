@@ -43,7 +43,7 @@ const UploadControls = React.memo(
           ref={input}
           onChange={handleChange}
         />
-        <StyledButton onClick={handleClick}>Choose File</StyledButton>
+        <StyledButton onClick={handleClick}>Choose File(s)</StyledButton>
         <StyledButton
           disabled={disabled}
           onClick={postURL ? handleGoToPost : handleUpload}

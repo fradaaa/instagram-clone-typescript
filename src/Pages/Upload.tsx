@@ -58,24 +58,29 @@ const Upload = () => {
     [files, firebase, updateUploadedCount]
   );
 
+  const handleFiles = useCallback(async (files: File[]) => {
+    if (files.length > 5) {
+      toast("Too many files");
+      return;
+    }
+
+    dispatch({ type: "processing" });
+    const DataURLs = await Promise.all(files.map((f) => readFile(f)));
+    dispatch({
+      type: "setFiles",
+      payload: { files, images: DataURLs },
+    });
+  }, []);
+
   const handleChange = useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       const files = e.target.files;
 
       if (files) {
-        if (files.length > 5) return;
-
-        const filesArray = Array.from(files);
-
-        dispatch({ type: "processing" });
-        const DataURLs = await Promise.all(filesArray.map((f) => readFile(f)));
-        dispatch({
-          type: "setFiles",
-          payload: { files: filesArray, images: DataURLs },
-        });
+        handleFiles(Array.from(files));
       }
     },
-    []
+    [handleFiles]
   );
 
   return (
@@ -85,6 +90,7 @@ const Upload = () => {
         active={active}
         isProcessing={isProcessing}
         removeFile={removeFile}
+        handleFiles={handleFiles}
       />
       <UploadControls
         disabled={!active || isUploading}

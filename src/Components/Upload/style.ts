@@ -38,6 +38,7 @@ export const ChoosePreviewContainer = styled(FlexCol)`
   height: 100%;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 
   & svg {
     display: block;
