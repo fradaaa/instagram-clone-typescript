@@ -103,6 +103,8 @@ export const PostHeaderContainer = styled(FlexRow)`
 
 export const HiddenPostHeaderContainer = styled(PostHeaderContainer)`
   display: flex;
+  border: none;
+  padding: 0;
 
   ${mq["md"]} {
     display: none;
