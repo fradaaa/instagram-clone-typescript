@@ -43,7 +43,7 @@ const SendMessageForm = ({ closeModal }: { closeModal: () => void }) => {
             toast("Message has been sent.");
             closeModal();
           } catch (error) {
-            setErrors({ message: error.message });
+            setErrors({ message: (error as Error).message });
             console.error(error);
           }
         }}

@@ -6,6 +6,7 @@ import { useFirebase, useQueryParams } from "../../Hooks";
 import { formReducer } from "../../Reducers";
 import { formInitialState } from "../../Reducers/formReducer";
 import { SubmitButton } from "../Buttons";
+import LoginTest from "../Buttons/LoginTest";
 import {
   FormContainer,
   FormHeader,
@@ -15,12 +16,12 @@ import {
 } from "./style";
 import TextInput from "./TextInput";
 
-interface Values {
+export interface LoginValues {
   email: string;
   password: string;
 }
 
-const initialValues: Values = {
+const initialValues: LoginValues = {
   email: "",
   password: "",
 };
@@ -52,7 +53,7 @@ const LoginForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={async (values: Values) => {
+          onSubmit={async (values: LoginValues) => {
             dispatch({ type: "reset" });
             const { email, password } = values;
             try {
@@ -83,6 +84,7 @@ const LoginForm = () => {
             <StyledFormLink to="/accounts/resetpassword">
               Forgot password?
             </StyledFormLink>
+            <LoginTest />
           </Form>
         </Formik>
       </FormContainer>
