@@ -5,8 +5,8 @@ const NavAuthLinks = () => {
   return (
     <NavAuthLinksContainer>
       <ChangeThemeButton />
-      <AuthLink to="/">Log In</AuthLink>
-      <AuthLink to="/">Sign Up</AuthLink>
+      <AuthLink to="/accounts/login">Log In</AuthLink>
+      <AuthLink to="/accounts/signup">Sign Up</AuthLink>
     </NavAuthLinksContainer>
   );
 };
